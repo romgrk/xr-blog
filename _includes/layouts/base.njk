@@ -17,7 +17,7 @@
         <div>{{ metadata.title }}</div>
       </a>
       <ul class="header__nav">
-        {%- for nav in collections.nav | reverse -%}
+        {%- for nav in collections.nav_EN | reverse -%}
         <li class="header__nav__item{% if nav.url == page.url %} header__nav__item--active{% endif %}">
           <a href="{{ nav.url | url }}">{{ nav.data.navtitle }}</a>
         </li>
