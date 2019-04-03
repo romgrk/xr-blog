@@ -1,0 +1,74 @@
+/*
+ * typography.css
+ * Copyright (C) 2019 romgrk
+ *
+ * Distributed under terms of the MIT license.
+ */
+
+@font-face {
+  font-family: 'FucXed';
+  src: url('/fonts/fucxedcaps-webfont.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal
+}
+
+
+body {
+  font-family: sans-serif;
+  font-size: 16px;
+}
+
+h1 {
+  font-family: "FucXed", sans-serif;
+  text-transform: uppercase;
+  font-size: 3.5em;
+  line-height: 1;
+}
+
+h2 {
+  font-family: "FucXed", sans-serif;
+  text-transform: uppercase;
+  font-size: 2em;
+  line-height: 1;
+}
+
+h1, h2, h3 {
+  margin: .3em 0 10px;
+}
+
+.text-green {
+  color: var(--green);
+}
+
+.text-muted {
+  color: var(--lightgray);
+}
+
+ol.big-numbers {
+  list-style-type: none!important;
+  list-style-type: decimal !ie;
+  margin: 0;
+  margin-left: 3em;
+  padding: 0;
+  counter-reset: li-counter
+}
+ol.big-numbers>li {
+  position: relative;
+  margin-bottom: 40px;
+  padding-left: 0.5em;
+  min-height: 3em;
+  border-left: 2px solid #CCCCCC
+}
+ol.big-numbers>li:before {
+  position: absolute;
+  top: 0;
+  left: -1em;
+  width: 1em;
+  font-family: "FucXed",sans-serif;
+  font-size: 3em;
+  line-height: 1;
+  text-align: center;
+  color: #2e2d2c;
+  content: counter(li-counter);
+  counter-increment: li-counter
+}
