@@ -1,0 +1,16 @@
+---
+layout: layouts/base.njk
+templateClass: page-archive
+messages:
+  en:
+  fr:
+---
+
+<h1 class="archive__title page__title">
+  Archive
+</h1>
+
+<div class="archive__content page__content">
+  {% set postslist = collections['posts_' + lang] %}
+  {% include "postslist.njk" %}
+</div>

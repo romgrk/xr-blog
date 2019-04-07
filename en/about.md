@@ -1,11 +1,10 @@
 ---
-layout: layouts/post.njk
-title: About Me
-tags:
-  - nav_en
+layout: layouts/about.njk
+title: About
+tags: nav_en
 navtitle: About
-templateClass: tmpl-post
+templateClass: about-page
 date: 2000-01-01
 ---
 
-I am a person that writes stuff.
+Description of this blog

@@ -1,4 +1,5 @@
 ---
+layout: layouts/base.njk
 pagination:
   data: collections
   size: 1
@@ -6,18 +7,18 @@ pagination:
   filter:
     - all
     - nav_en
-    - nav_FR
+    - nav_fr
     - post
     - posts_en
-    - posts_FR
-layout: layouts/home.njk
+    - posts_fr
 renderData:
   title: Tagged “{{ tag }}”
 permalink: /en/tags/{{ tag }}/
 ---
+
 <h1>Tagged “{{ tag }}”</h1>
 
-{% set postslist = collections[ tag ] %}
+{% set postslist = collections[tag] %}
 {% include "postslist.njk" %}
 
-<p>See <a href="{{ '/tags/' | url }}">all tags</a>.</p>
+<p>See <a href="{{ '/tags/' | localeURL(lang) }}">all tags</a>.</p>

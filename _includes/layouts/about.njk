@@ -1,0 +1,16 @@
+---
+layout: layouts/base.njk
+messages:
+  en:
+    aboutTitle: 'About'
+  fr:
+    aboutTitle: 'À propos'
+---
+
+<h1 class="about__title page__title">
+  {{ messages[lang].aboutTitle }}
+</h1>
+
+<div class="about__content page__content">
+  {{ content | safe }}
+</div>

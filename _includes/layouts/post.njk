@@ -1,9 +1,24 @@
 ---
 layout: layouts/base.njk
-templateClass: tmpl-post
+templateClass: page-post
 ---
-<h1>{{ title }}</h1>
+<div class="post">
 
-{{ content | safe }}
+  <h2 class="post__overtitle">
+    POST
+  </h2>
+  <h1 class="post__title">
+    {{ title }}
+  </h1>
 
-<p><a href="{{ '/' | url }}">← Home</a></p>
+  <div class="post__details">
+    <div class="post__author">{{ author }}</div>
+    <div class="post__date">{{ date | longDate(lang) }}</div>
+  </div>
+
+  <div class="post__content">
+    {{ content | safe }}
+  </div>
+
+  <a class="go-home" href="{{ '/' + lang | url }}"><i class="fa fa-arrow-left"></i>  Home</a>
+</div>
