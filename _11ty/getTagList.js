@@ -11,9 +11,11 @@ module.exports = function(collection) {
         switch(item) {
           // this list should match the `filter` list in tags.njk
           case 'all':
-          case 'nav':
+          case 'nav_en':
+          case 'nav_fr':
           case 'post':
-          case 'posts':
+          case 'posts_en':
+          case 'posts_fr':
             return false;
         }
 

@@ -28,6 +28,11 @@ module.exports = function(eleventyConfig) {
     return array.slice(0, n);
   });
 
+  // Transforms an url to the target lang
+  eleventyConfig.addFilter("urlForLang", (url, lang) => {
+    return url.replace(/^\/\w+/, '/' + lang)
+  });
+
   eleventyConfig.addCollection("tagList", require("./_11ty/getTagList"));
 
   eleventyConfig.addPassthroughCopy("img");

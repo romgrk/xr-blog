@@ -13,16 +13,29 @@
 
     <header class="header">
       <a class="header__logo" href="{{ '/' | url }}">
-        <img src="{{ '/img/xr-logo.png' | url }}" />
-        <div>{{ metadata.title }}</div>
+        <img src="{{ '/img/xr-logo-white.png' | url }}" />
       </a>
       <ul class="header__nav">
-        {%- for nav in collections.nav_EN | reverse -%}
+        {%- for nav in collections['nav_' + lang] | reverse -%}
         <li class="header__nav__item{% if nav.url == page.url %} header__nav__item--active{% endif %}">
           <a href="{{ nav.url | url }}">{{ nav.data.navtitle }}</a>
         </li>
         {%- endfor -%}
       </ul>
+
+      <div class="header__lang">
+        {% if lang !== 'en' %}
+          <a href="{{ page.url | urlForLang('en') }}">EN</a>
+        {% else %}
+          <span class="active">EN</span>
+        {% endif %}
+        |
+        {% if lang !== 'fr' %}
+          <a href="{{ page.url | urlForLang('fr') }}">FR</a>
+        {% else %}
+          <span class="active">FR</span>
+        {% endif %}
+      </div>
     </header>
 
     <main class="main {% if templateClass %} {{ templateClass }}{% endif %}">

@@ -1,10 +1,11 @@
 ---
 layout: layouts/post.njk
-title: About Me
+title: À propos
 tags:
-  - nav_EN
-navtitle: About
+  - nav_fr
+navtitle: À propos
 templateClass: tmpl-post
+date: 2000-01-01
 ---
 
 I am a person that writes stuff.
