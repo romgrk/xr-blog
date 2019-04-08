@@ -15,14 +15,46 @@ messages:
 ---
 
 <div class="home__hero">
-  <h1>{{ messages[lang].title }}</h1>
+  <div class="home__hero__img"></div>
+  <div class="home__hero__content">
+    <h1>{{ messages[lang].title }}</h1>
+  </div>
 </div>
 
 <div class="home__content">
-  <h2>{{ messages[lang].postsTitle }}</h2>
 
-  {% set postslist = collections['posts_' + lang] | head(-5) %}
-  {% include "postslist.njk" %}
+  {% set postslist = collections['posts_' + lang] | head(-10) %}
+
+  <div class="home__posts">
+
+  {% for post in postslist | reverse %}
+    <div class="home__post">
+
+      <a class="home__post__title" href="{{ post.url | url }}">
+        <h2>{{ post.data.title }}</h2>
+      </a>
+
+      <a class="home__post__description" href="{{ post.url | url }}">
+        {{ post.templateContent | firstParagraph | safe }}
+      </a>
+
+      <div class="home__post__details">
+        <time class="home__post__date" datetime="{{ post.date | htmlDateString }}">
+          {{ post.date | readableDate(lang) }}
+        </time>
+
+        {% for tag in post.data.tags %}
+        {%- if tag != "posts_en" and tag != "posts_fr" -%}
+        {% set tagUrl %}/tags/{{ tag }}/{% endset %}
+        <a href="{{ tagUrl | localeURL(lang) }}" class="tag">{{ tag }}</a>
+        {%- endif -%}
+        {% endfor %}
+      </div>
+
+    </div>
+  {% endfor %}
+
+  </div>
 
   <p>{{ messages[lang].endMessage }} <a href="{{ '/posts/' | localeURL(lang) }}">{{ messages[lang].endMessageLink }}</a>.</p>
 </div>

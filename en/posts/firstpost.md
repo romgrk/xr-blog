@@ -1,5 +1,5 @@
 ---
-title: This is my first post
+title: First post on agile
 description: This is a post on My Blog about agile frameworks.
 tags: ['xr-quebec']
 date: 2018-05-01

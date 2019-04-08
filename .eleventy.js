@@ -2,6 +2,8 @@ const fs = require('fs')
 const pluginRss = require('@11ty/eleventy-plugin-rss')
 const pluginSyntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight')
 
+const cheerio = require('cheerio')
+
 const format = require('date-fns/format')
 const locales = {
   en: require('date-fns/locale/en'),
@@ -15,16 +17,16 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addLayoutAlias("post", "layouts/post.njk");
 
-  eleventyConfig.addFilter("readableDate", readableDate)
-  eleventyConfig.addFilter("longDate", longDate)
+  eleventyConfig.addFilter('readableDate', readableDate)
+  eleventyConfig.addFilter('longDate', longDate)
   eleventyConfig.addFilter('htmlDateString', htmlDateString)
+  eleventyConfig.addFilter('firstParagraph', firstParagraph)
+
 
   // Get the first `n` elements of a collection.
-  eleventyConfig.addFilter("head", (array, n) => {
-    if( n < 0 ) {
+  eleventyConfig.addFilter('head', (array, n) => {
+    if (n < 0)
       return array.slice(n);
-    }
-
     return array.slice(0, n);
   });
 
@@ -119,4 +121,10 @@ function formatDate(dateObj, lang, formatStr) {
 
 function htmlDateString(dateObj) {
   return format(dateObj, 'YYYY-MM-DD')
+}
+
+function firstParagraph(content) {
+  const $ = cheerio.load(content)
+  const p = $('p')
+  return p.html()
 }

@@ -1,5 +1,4 @@
 ---
-layout: layouts/base.njk
 pagination:
   data: collections
   size: 1
@@ -11,14 +10,26 @@ pagination:
     - post
     - posts_en
     - posts_fr
+layout: layouts/base.njk
 renderData:
-  title: Tagged “{{ tag }}”
-permalink: /en/tags/{{ tag }}/
+  title: Tag “{{ tag }}”
+permalink: /{{ lang }}/tags/{{ tag }}/
+messages:
+  en:
+    tagsTitle: 'Tagged'
+    tagsSee: 'See'
+    tagsSeeAll: 'all tags'
+  fr:
+    tagsTitle: 'Tag'
+    tagsSee: 'Voir'
+    tagsSeeAll: 'tous les tags'
 ---
 
-<h1>Tagged “{{ tag }}”</h1>
+<div class="page__content">
+  <h1>{{ messages[lang].tagsTitle }} “{{ tag }}”</h1>
 
-{% set postslist = collections[tag] %}
-{% include "postslist.njk" %}
+  {% set postslist = collections[ tag ] %}
+  {% include "postslist.njk" %}
 
-<p>See <a href="{{ '/tags/' | localeURL(lang) }}">all tags</a>.</p>
+  <p>{{ messages[lang].tagsSee }} <a href="{{ '/tags/' | localeURL(lang) }}">{{ messages[lang].tagsSeeAll }}</a></p>
+</div>
