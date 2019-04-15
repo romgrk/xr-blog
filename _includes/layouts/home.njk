@@ -23,7 +23,7 @@ messages:
 
 <div class="home__content">
 
-  {% set postslist = collections['posts_' + lang] | head(-10) %}
+  {% set postslist = collections['post_' + lang] | head(-10) %}
 
   <div class="home__posts">
 
@@ -44,7 +44,7 @@ messages:
         </time>
 
         {% for tag in post.data.tags %}
-        {%- if tag != "posts_en" and tag != "posts_fr" -%}
+        {%- if tag != "post_en" and tag != "post_fr" -%}
         {% set tagUrl %}/tags/{{ tag }}/{% endset %}
         <a href="{{ tagUrl | localeURL(lang) }}" class="tag">{{ tag }}</a>
         {%- endif -%}

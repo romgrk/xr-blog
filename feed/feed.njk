@@ -8,13 +8,13 @@ excludeFromSitemap: true
 	<subtitle>{{ metadata.feed.subtitle }}</subtitle>
 	<link href="{{ metadata.feed.url }}" rel="self"/>
 	<link href="{{ metadata.url }}"/>
-	<updated>{{ collections.posts_en | rssLastUpdatedDate }}</updated>
+	<updated>{{ collections.post_en | rssLastUpdatedDate }}</updated>
 	<id>{{ metadata.feed.id }}</id>
 	<author>
 		<name>{{ metadata.author.name }}</name>
 		<email>{{ metadata.author.email }}</email>
 	</author>
-	{%- for post in collections.posts_en %}
+	{%- for post in collections.post_en %}
 	{% set absolutePostUrl %}{{ post.url | url | absoluteUrl(metadata.url) }}{% endset %}
 	<entry>
 		<title>{{ post.data.title }}</title>

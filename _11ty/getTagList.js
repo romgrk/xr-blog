@@ -14,8 +14,9 @@ module.exports = function(collection) {
           case 'nav_en':
           case 'nav_fr':
           case 'post':
-          case 'posts_en':
-          case 'posts_fr':
+          case 'post_en':
+          case 'post_fr':
+          case 'post_skip':
             return false;
         }
 

@@ -124,7 +124,20 @@ function htmlDateString(dateObj) {
 }
 
 function firstParagraph(content) {
+  let result = undefined
+
   const $ = cheerio.load(content)
-  const p = $('p')
-  return p.html()
+  const ps = $('p')
+
+  ps.each((index, element) => {
+    if (result)
+      return
+
+    if ($(element).parent().is('blockquote'))
+      return
+
+    result = $(element).html()
+  })
+
+  return result
 }
