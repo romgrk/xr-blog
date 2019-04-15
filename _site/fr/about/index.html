@@ -1,59 +1,57 @@
----
-messages:
-  en:
-    mainSite: 'Main Site'
-  fr:
-    mainSite: 'Site Principal'
----
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ renderData.title or title or metadata.title }}</title>
-    <meta name="Description" content="{{ renderData.description or description or metadata.description }}">
+    <title>À propos</title>
+    <meta name="Description" content="Extinction Rebellion Canada blog">
 
     <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
 
-    <link rel="alternate" href="{{ metadata.feed.path | url }}" type="application/atom+xml" title="{{ metadata.title }}">
+    <link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="XR Canada Blog">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="{{ '/css/index.css' | url }}">
-    <link rel="stylesheet" href="{{ '/css/typography.css' | url }}">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/typography.css">
   </head>
   <body>
 
     <header class="header">
       <div class="header__content">
-        <a class="header__logo" href="{{ '/' | url }}">
-          <img src="{{ '/img/xr-logo-white.png' | url }}" />
+        <a class="header__logo" href="/">
+          <img src="/img/xr-logo-white.png" />
         </a>
-        <ul class="header__nav">
-          {%- for nav in collections['nav_' + lang] | reverse -%}
-          <li class="header__nav__item{% if nav.url == page.url %} header__nav__item--active{% endif %}">
-            <a href="{{ nav.url | url }}">{{ nav.data.navtitle }}</a>
-          </li>
-          {%- endfor -%}
-        </ul>
+        <ul class="header__nav"><li class="header__nav__item">
+            <a href="/fr/">Accueil</a>
+          </li><li class="header__nav__item">
+            <a href="/fr/posts/">Archive</a>
+          </li><li class="header__nav__item header__nav__item--active">
+            <a href="/fr/about/">À propos</a>
+          </li></ul>
       </div>
 
       <div class="header__langs">
-        {% if lang !== 'en' %}
-          <a class="header__lang" href="{{ page.url | urlForLang('en') }}">EN</a>
-        {% else %}
-          <span class="header__lang header__lang--active">EN</span>
-        {% endif %}
+        
+          <a class="header__lang" href="/en/about/">EN</a>
+        
         |
-        {% if lang !== 'fr' %}
-          <a class="header__lang" href="{{ page.url | urlForLang('fr') }}">FR</a>
-        {% else %}
+        
           <span class="header__lang header__lang--active">FR</span>
-        {% endif %}
+        
       </div>
     </header>
 
-    <main class="main {% if templateClass %} {{ templateClass }}{% endif %}">
-      {{ content | safe }}
+    <main class="main ">
+      
+<h1 class="about__title page__title">
+  À propos
+</h1>
+
+<div class="about__content page__content">
+  <p>Description de ce blog</p>
+
+</div>
+
     </main>
 
     <footer class="footer">
@@ -61,14 +59,14 @@ messages:
         <div class="footer__content__main">
           <div class="footer__links">
             <a href="https://extinctionrebellion.ca">
-              <i class="fa fa-arrow-circle-right"></i> {{ messages[lang].mainTitle }}
+              <i class="fa fa-arrow-circle-right"></i> 
             </a>
           </div>
           <div class="footer__social">
             <a class="footer__social__link" href="https://www.facebook.com/ExtinctionRebellionCanada/">
               <i class="footer__icon footer__icon--facebook fa fa-facebook"></i> Facebook
             </a>
-            <a class="footer__social__link" href="https://twitter.com/xrebelcanada?lang={{ lang }}">
+            <a class="footer__social__link" href="https://twitter.com/xrebelcanada?lang=fr">
               <i class="footer__icon footer__icon--twitter fa fa-twitter"></i> Twitter
             </a>
             <a class="footer__social__link" href="https://www.youtube.com/channel/UCYThdLKE6TDwBJh-qDC6ICA">
@@ -85,7 +83,7 @@ messages:
       </div>
     </footer>
 
-    <!-- Current page: {{ page.url | url }} -->
+    <!-- Current page: /fr/about/ -->
 
   </body>
 </html>
